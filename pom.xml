@@ -467,4 +467,9 @@
     </mailingList>
   </mailingLists>
 
+  <scm>
+    <connection>scm:git:git@github.com:ehcache/ehcache-parent.git</connection>
+    <developerConnection>scm:git:https://github.com/ehcache/ehcache-parent.git</developerConnection>
+  </scm>
+
 </project>
