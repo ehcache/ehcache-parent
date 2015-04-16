@@ -18,7 +18,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven-forge-plugin.version>1.2.13</maven-forge-plugin.version>
+    <maven-forge-plugin.version>1.2.19</maven-forge-plugin.version>
     <finder.version>3.0</finder.version>
     <skipDeploy>false</skipDeploy>
     <skipJavadoc>false</skipJavadoc>
@@ -321,6 +321,10 @@
           <id>sonatype-nexus-staging</id>
           <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
+        <snapshotRepository>
+          <id>sonatype-nexus-snapshots</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
       </distributionManagement>
     </profile>
   </profiles>
@@ -457,10 +461,10 @@
   <mailingLists>
     <mailingList>
       <name>Ehcache Mailing List</name>
-      <subscribe>http://lists.terracotta.org/mailman/listinfo/ehcache-list</subscribe>
-      <unsubscribe>http://lists.terracotta.org/mailman/listinfo/ehcache-list</unsubscribe>
-      <post>ehcache-list@lists.terracotta.org</post>
-      <archive>http://lists.terracotta.org/pipermail/ehcache-list/</archive>
+      <subscribe>https://groups.google.com/forum/#!forum/ehcache-users</subscribe>
+      <unsubscribe>https://groups.google.com/forum/#!forum/ehcache-users</unsubscribe>
+      <post>ehcache-users@googlegroups.com</post>
+      <archive>https://groups.google.com/forum/#!forum/ehcache-users</archive>
     </mailingList>
     <mailingList>
       <name>Old SourceForge Mailing List - closed due to spam attacks</name>
