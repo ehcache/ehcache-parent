@@ -21,7 +21,7 @@
       -Darguments=-Djava.build.version=1.7 -->
     <java.build.version>1.6</java.build.version>
     <!-- The vendor value to look for in toolchains.xml -->
-    <java.build.vendor>sun</java.build.vendor>
+    <java.build.vendor>Oracle Corporation</java.build.vendor>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven-forge-plugin.version>1.2.19</maven-forge-plugin.version>
@@ -331,6 +331,7 @@
                     <excludeArtifacts>
                       <excludeArtifact>org.codehaus.jackson:jackson-xc</excludeArtifact>
                       <excludeArtifact>javax.validation:validation-api</excludeArtifact>
+                      <excludeArtifact>javax.xml.bind:jaxb-api</excludeArtifact>
                     </excludeArtifacts>
                   </configuration>
                 </execution>
