@@ -19,7 +19,7 @@
   <properties>
     <!-- NOTE: to override these when using maven release plugin use this format:
       -Darguments=-Djava.build.version=1.7 -->
-    <java.build.version>1.6</java.build.version>
+    <java.build.version>1.8</java.build.version>
     <!-- The vendor value to look for in toolchains.xml -->
     <java.build.vendor>Oracle Corporation</java.build.vendor>
 
