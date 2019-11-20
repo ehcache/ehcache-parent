@@ -25,7 +25,6 @@
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven-forge-plugin.version>1.2.27</maven-forge-plugin.version>
-    <finder.version>3.0</finder.version>
     <skipDeploy>false</skipDeploy>
     <skipJavadoc>false</skipJavadoc>
 
@@ -185,52 +184,6 @@
         </plugins>
       </build>
     </profile>
-    <profile>
-      <id>sag-deps</id>
-      <activation>
-        <property>
-          <name>sag-deps</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.terracotta</groupId>
-              <artifactId>maven-forge-plugin</artifactId>
-              <version>${maven-forge-plugin.version}</version>
-              <dependencies>
-                <dependency>
-                  <groupId>com.softwareag.ibit.tools.util</groupId>
-                  <artifactId>finder</artifactId>
-                  <version>${finder.version}</version>
-                </dependency>
-              </dependencies>
-              <executions>
-                <execution>
-                  <id>run-sag-finder</id>
-                  <phase>compile</phase>
-                  <goals>
-                    <goal>sag-finder</goal>
-                  </goals>
-                  <configuration>
-                    <onlyRunWhenSagDepsIsTrue>true</onlyRunWhenSagDepsIsTrue>
-                    <excludeGroupIds>gf-3122,gf-40</excludeGroupIds>
-                    <excludeArtifacts>
-                      <excludeArtifact>org.codehaus.jackson:jackson-xc</excludeArtifact>
-                      <excludeArtifact>javax.validation:validation-api</excludeArtifact>
-                      <excludeArtifact>javax.xml.bind:jaxb-api</excludeArtifact>
-                    </excludeArtifacts>
-                  </configuration>
-                </execution>
-              </executions>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
-    </profile>
-
     <profile>
       <id>deploy-sonatype</id>
       <distributionManagement>
