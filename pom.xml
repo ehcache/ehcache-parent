@@ -24,7 +24,10 @@
     <java.build.vendor>zulu</java.build.vendor>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven-forge-plugin.version>1.2.27</maven-forge-plugin.version>
+    <surefire.version>3.0.0-M4</surefire.version> <!-- will be disabled in favor of maven-forge-plugin -->
+    <maven-forge-plugin.version>1.2.30</maven-forge-plugin.version>
+    <java.test.version>${java.build.version}</java.test.version>
+    <java.test.vendor>${java.build.vendor}</java.test.vendor>
     <skipDeploy>false</skipDeploy>
     <skipJavadoc>false</skipJavadoc>
 
@@ -103,6 +106,18 @@
             <skip>${skipDeploy}</skip>
           </configuration>
         </plugin>
+
+        <plugin>
+          <groupId>org.terracotta</groupId>
+          <artifactId>maven-forge-plugin</artifactId>
+          <version>${maven-forge-plugin.version}</version>
+          <configuration>
+            <jdk>
+              <version>${java.test.version}</version>
+              <vendor>${java.test.vendor}</vendor>
+            </jdk>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -148,7 +163,15 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
-      </plugin>      
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.version}</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
