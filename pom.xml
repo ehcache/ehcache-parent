@@ -240,10 +240,22 @@
     <repository>
       <id>terracotta-snapshots</id>
       <url>https://snapshots.terracotta.org/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
     <repository>
       <id>terracotta-releases</id>
       <url>https://repo.terracotta.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </repository>
   </repositories>
 
@@ -251,10 +263,22 @@
     <pluginRepository>
       <id>terracotta-snapshots</id>
       <url>https://snapshots.terracotta.org/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </pluginRepository>
     <pluginRepository>
       <id>terracotta-releases</id>
       <url>https://repo.terracotta.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </pluginRepository>
   </pluginRepositories>
 
