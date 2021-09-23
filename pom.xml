@@ -2,10 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.terracotta.forge</groupId>
+    <artifactId>forge-parent</artifactId>
+    <version>5.6</version>
+  </parent>
+
   <groupId>net.sf.ehcache</groupId>
   <artifactId>ehcache-parent</artifactId>
   <packaging>pom</packaging>
-  <version>2.28-SNAPSHOT</version>
+  <version>3.0-SNAPSHOT</version>
 
   <name>Ehcache Parent</name>
   <description>Ehcache is a widely used, pure Java, in-process, distributed cache</description>
@@ -17,66 +23,18 @@
   </organization>
 
   <properties>
-    <!-- NOTE: to override these when using maven release plugin use this format:
-      -Darguments=-Djava.build.version=1.7 -->
-    <java.build.version>1.8</java.build.version>
-    <!-- The vendor value to look for in toolchains.xml -->
-    <java.build.vendor>zulu</java.build.vendor>
-
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <surefire.version>3.0.0-M4</surefire.version> <!-- will be disabled in favor of maven-forge-plugin -->
-    <maven-forge-plugin.version>1.2.30</maven-forge-plugin.version>
-    <java.test.version>${java.build.version}</java.test.version>
-    <java.test.vendor>${java.build.vendor}</java.test.vendor>
-    <skipDeploy>false</skipDeploy>
-    <skipJavadoc>false</skipJavadoc>
-
-    <checkstyle-groupId>org.terracotta.checkstyle</checkstyle-groupId>
-    <checkstyle-artifactId>terracotta-checkstyle</checkstyle-artifactId>
-    <checkstyle-version>1.4</checkstyle-version>
-    <checkstyle-config-file>terracotta-checkstyle/checkstyle.xml</checkstyle-config-file>
-    <checkstyle-header-file>terracotta-checkstyle/header.txt</checkstyle-header-file>
-
-    <terracotta-os-snapshots-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-os-snapshots</terracotta-os-snapshots-url>
-    <terracotta-snapshots-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-snapshots</terracotta-snapshots-url>
-    <terracotta-ee-snapshots-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-ee-snapshots</terracotta-ee-snapshots-url>
-    <terracotta-staging-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-staging</terracotta-staging-url>
-    <terracotta-os-releases-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-os-releases</terracotta-os-releases-url>
-    <terracotta-releases-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-releases</terracotta-releases-url>
-    <terracotta-ee-releases-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-ee-releases</terracotta-ee-releases-url>
-    <terracotta-nexus-staging-url>http://nexus.terracotta.eur.ad.sag/service/local/staging/deploy/maven2</terracotta-nexus-staging-url>
   </properties>
 
   <build>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
-        </plugin>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.1</version>
-          <configuration>
-            <skip>${skipJavadoc}</skip>
-          </configuration>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-
+        <!-- TODO: can we change forge-parent to package phase? -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>${source-plugin.version}</version>
           <executions>
             <execution>
               <id>attach-sources</id>
@@ -91,88 +49,15 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>findbugs-maven-plugin</artifactId>
-          <version>3.0.5</version>
+          <version>${findbugs-plugin.version}</version>
           <configuration>
             <findbugsXmlOutput>true</findbugsXmlOutput>
             <xmlOutput>true</xmlOutput>
           </configuration>
         </plugin>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0-M1</version>
-          <configuration>
-            <skip>${skipDeploy}</skip>
-          </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>org.terracotta</groupId>
-          <artifactId>maven-forge-plugin</artifactId>
-          <version>${maven-forge-plugin.version}</version>
-          <configuration>
-            <jdk>
-              <version>${java.test.version}</version>
-              <vendor>${java.test.vendor}</vendor>
-            </jdk>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
-
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>${java.build.version}</source>
-          <target>${java.build.version}</target>
-        </configuration>
-      </plugin>
-      <!-- Ensure that we are compiling with the correct JDK even if we are running on a later version -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-toolchains-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>toolchain</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <toolchains>
-            <jdk>
-              <version>${java.build.version}</version>
-              <vendor>${java.build.vendor}</vendor>
-            </jdk>
-          </toolchains>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire.version}</version>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 
   <profiles>
@@ -258,29 +143,6 @@
       </snapshots>
     </repository>
   </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>terracotta-snapshots</id>
-      <url>https://snapshots.terracotta.org/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>terracotta-releases</id>
-      <url>https://repo.terracotta.org/maven2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
 
   <developers>
     <developer>
