@@ -5,13 +5,13 @@
   <parent>
     <groupId>org.terracotta.forge</groupId>
     <artifactId>forge-parent</artifactId>
-    <version>5.7</version>
+    <version>5.9.1</version>
   </parent>
 
   <groupId>net.sf.ehcache</groupId>
   <artifactId>ehcache-parent</artifactId>
   <packaging>pom</packaging>
-  <version>3.1</version>
+  <version>3.2</version>
 
   <name>Ehcache Parent</name>
   <description>Ehcache is a widely used, pure Java, in-process, distributed cache</description>
