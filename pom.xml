@@ -236,17 +236,6 @@
     </contributor>
   </contributors>
 
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.ehcache.org/about/license</url>
-      <distribution>repo</distribution>
-      <comments>The license is the standard wording from the Apache license.
-                Terracotta, Inc. is the copyright owner.
-      </comments>
-    </license>
-  </licenses>
-
   <issueManagement>
     <system>Terracotta's JIRA</system>
     <url>https://jira.terracotta.org/jira/browse/EHC</url>
