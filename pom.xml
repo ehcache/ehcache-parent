@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.terracotta.forge</groupId>
     <artifactId>forge-parent</artifactId>
-    <version>8.0</version>
+    <version>8.1</version>
   </parent>
 
   <groupId>net.sf.ehcache</groupId>
@@ -30,20 +30,10 @@
     <pluginManagement>
       <plugins>
 
-        <!-- TODO: can we change forge-parent to package phase? -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
           <version>${source-plugin.version}</version>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <phase>package</phase>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
 
         <plugin>
