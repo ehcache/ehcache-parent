@@ -24,6 +24,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <artifactory-build-name>ehcache-parent</artifactory-build-name>
   </properties>
 
   <build>
